@@ -1,4 +1,4 @@
-"/* Extract the command */
+/* Extract the command */
 String command = plugin.ExtractInGameCommand(player.LastChat);
 
 /* Sanity check the command */
@@ -47,4 +47,4 @@ if (Regex.Match(command, ""^listadmins$"", RegexOptions.IgnoreCase).Success)
         }
 }
 
-return false;"
+return false;
