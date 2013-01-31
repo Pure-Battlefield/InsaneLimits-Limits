@@ -1,6 +1,6 @@
 //Content in the ANNOUNCEMENTS section NEEDS to be customized for each server (starting at line 44).
 
-"if( limit.Activations() > 1 )
+if( limit.Activations() > 1 )
         return false;
         
 // -----------------------------------------------------------------------
@@ -307,4 +307,4 @@ foreach( string msg in announcementText[gameTypeSwitchingAnnouncementIndex.Value
         }
         
         plugin.SendGlobalMessage( replacedMsg );
-}"
+}
