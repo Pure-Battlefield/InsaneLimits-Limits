@@ -1,4 +1,4 @@
-"if( Regex.Match(player.LastChat, @""^\s*[!/](aboutpure)$"", RegexOptions.IgnoreCase).Success )
+if( Regex.Match(player.LastChat, @""^\s*[!/](aboutpure)$"", RegexOptions.IgnoreCase).Success )
 {
         string about_1 = ""We use all maps (when full), default settings (incl."";
         string about_2 = ""vehicle spawns), modest tickets, a squad-preserving"";
@@ -17,4 +17,4 @@
                 plugin.ServerCommand(""admin.say"", X, ""player"", player.Name);
 }
                 
-return false;"
+return false;
