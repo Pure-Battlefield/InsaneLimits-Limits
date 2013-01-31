@@ -9,7 +9,7 @@ if(
   ) 
         return false; 
 
-String adminList = ""Admins online: "";
+String adminList = "Admins online: ";
 bool found = false;
 
 // Make a list of all players currently on the server
@@ -24,11 +24,11 @@ if( team4.players.Count > 0 )
 // Make a list of all supporters currently on the server   
 foreach( PlayerInfoInterface p in players )
 {
-        if( plugin.isInList(p.Name, ""admins"") )
+        if( plugin.isInList(p.Name, "admins") )
         {
                 if( found )
                 {
-                        adminList = adminList + "", "" + p.Name;
+                        adminList = adminList + ", " + p.Name;
                 }
                 else
                 {
@@ -40,16 +40,16 @@ foreach( PlayerInfoInterface p in players )
 
 if( found )
 {
-   string msg1 = ""Type !listadmins to see this list at any time."";
-   plugin.ServerCommand(""admin.say"", adminList, ""player"", player.Name);
-   plugin.ServerCommand(""admin.say"", msg1, ""player"", player.Name);
+   string msg1 = "Type !listadmins to see this list at any time.";
+   plugin.ServerCommand("admin.say", adminList, "player", player.Name);
+   plugin.ServerCommand("admin.say", msg1, "player", player.Name);
 }
 else 
 {
-   string msg2 = ""Sorry, none of our admins are currently online."";
-   string msg3 = ""If you need help, you may page our admins via e-mail by typing !pageadmins [message]."";
-   plugin.ServerCommand(""admin.say"", msg2, ""player"", player.Name);
-   plugin.ServerCommand(""admin.say"", msg3, ""player"", player.Name);
+   string msg2 = "Sorry, none of our admins are currently online.";
+   string msg3 = "If you need help, you may page our admins via e-mail by typing !pageadmins [message].";
+   plugin.ServerCommand("admin.say", msg2, "player", player.Name);
+   plugin.ServerCommand("admin.say", msg3, "player", player.Name);
 }      
 
 return false;

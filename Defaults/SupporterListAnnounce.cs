@@ -9,7 +9,7 @@ if(
   ) 
         return false; 
 
-string supporterList = """";
+string supporterList = "";
 // Are any of our supporters currently online?  (If not, we won't print anything)
 bool found = false;
 
@@ -25,11 +25,11 @@ if( team4.players.Count > 0 )
 // Make a list of all supporters currently on the server   
 foreach( PlayerInfoInterface p in players )
 {
-        if( plugin.isInList(p.Name, ""supporters"") )
+        if( plugin.isInList(p.Name, "supporters") )
         {
                 if( found )
                 {
-                        supporterList = supporterList + "", "" + p.Name;
+                        supporterList = supporterList + ", " + p.Name;
                 }
                 else
                 {
@@ -41,9 +41,9 @@ foreach( PlayerInfoInterface p in players )
 
 if( found )
 {
-        string introText = ""Thanks to our donors & volunteers currently online:"";
-        plugin.ServerCommand(""admin.say"", introText, ""player"", player.Name);
-        plugin.ServerCommand(""admin.say"", supporterList, ""player"", player.Name);
+        string introText = "Thanks to our donors & volunteers currently online:";
+        plugin.ServerCommand("admin.say", introText, "player", player.Name);
+        plugin.ServerCommand("admin.say", supporterList, "player", player.Name);
 }
 
 return false;
