@@ -16,9 +16,10 @@ foreach(String chatword in chatwords)
         {
                 if (Regex.Match(chatword, "^"+hack+"[s]?[^a-z]*$", RegexOptions.IgnoreCase).Success)
                 {
-                        string msg1 = "Use the !pageadmin command for serious cheating accusations backed by evidence. We take accusations seriously and will investigate." ;
-  					plugin.ServerCommand ( "admin.say" , msg1, "player" , player.Name ) ;
-						plugin.ServerCommand ( "admin.yell" , msg1 , "8" , "player" , player.Name ) ;
+                        string msg1 = "Use the !pageadmin command for serious cheating accusations backed by evidence." ;
+                        string msg2 = "We take accusations seriously and will investigate." ;
+  					plugin.ServerCommand ( "admin.say" , msg1 , "player" , player.Name ) ;
+					plugin.ServerCommand ( "admin.say" , msg2 , "player" , player.Name ) ;
                         return true;
                         
                 }
