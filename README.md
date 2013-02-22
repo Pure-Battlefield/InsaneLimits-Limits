@@ -1,4 +1,4 @@
-README
+InsaneLimits-Limits
 ===================
 
 This Repo is used to store most of the InsaneLimit Limits that we use on our servers. All default limits should be in the "Defaults" folder.
