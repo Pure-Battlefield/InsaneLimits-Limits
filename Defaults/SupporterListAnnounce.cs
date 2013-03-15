@@ -2,12 +2,12 @@
 // (server.RoundsTotal % 2 == 1): odd-numbered rounds only
 // (limit.Activations(player.Name) == 2): second spawn of a round only 
 if(        
-        !(
-                (server.RoundsTotal % 2 == 1) && 
-                (limit.Activations(player.Name) == 2)
-         )
+	!(
+		(server.RoundsTotal % 2 == 1) && 
+		(limit.Activations(player.Name) == 2)
+	 )
   ) 
-        return false; 
+	return false; 
 
 string supporterList = "";
 // Are any of our supporters currently online?  (If not, we won't print anything)
@@ -25,25 +25,24 @@ if( team4.players.Count > 0 )
 // Make a list of all supporters currently on the server   
 foreach( PlayerInfoInterface p in players )
 {
-        if( plugin.isInList(p.Name, "supporters") )
-        {
-                if( found )
-                {
-                        supporterList = supporterList + ", " + p.Name;
-                }
-                else
-                {
-                        supporterList = supporterList + p.Name;
-                        found = true;
-                }
-        }
+	if( plugin.isInList(p.Name, "supporters") )
+	{
+		if( found )
+		{
+			supporterList = supporterList + ", " + p.Name;
+		}
+		else
+		{
+			supporterList = supporterList + p.Name;
+			found = true;
+		}
+	}
 }
 
 if( found )
 {
-        string introText = "Thanks to our donors & volunteers currently online:";
-        plugin.ServerCommand("admin.say", introText, "player", player.Name);
-        plugin.ServerCommand("admin.say", supporterList, "player", player.Name);
+	string introText = "Thanks to our donors & volunteers currently online: ";
+	plugin.ServerCommand("admin.say", introText + supporterList, "player", player.Name);
 }
 
 return false;
