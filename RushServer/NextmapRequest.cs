@@ -1,3 +1,5 @@
+//Content in the ANNOUNCEMENTS section NEEDS to be customized for each server (starting at line 106).
+
 // -----------------------------------------------------------------------
 //
 // DEFINITIONS AND TRIGGER CRITIERA FOR GAMETYPE SWITCHING ANNOUNCEMENTS
