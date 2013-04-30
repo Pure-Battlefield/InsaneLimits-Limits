@@ -20,7 +20,7 @@ List <string>[] announcementText = new List<string>[numAnnouncements];
 
 for( int i=0; i < numAnnouncements; i++ )
 {
-        announcementGameTypes[i] = new List<string>();
+  announcementGameTypes[i] = new List<string>();
         announcementText[i] = new List<string>();
 }
 
@@ -43,7 +43,8 @@ for( int i=0; i < numAnnouncements; i++ )
 Below is an example of 4 different announcements. Please use this example to build the announcements for each server.
 These examples are from the Main server
 
-announcementGameTypes[0].Add( "RushLarge0" ); //Game types can be referenced around line 153
+// damavand rush
+announcementGameTypes[0].Add( "RushLarge0" ); //Game types can be found in "BF3 friendly game modes" section
 announcementMinPlayers[0] = 1;
 announcementMaxPlayers[0] = 64;
 announcementServerNameMatchRequired[0] = true;
@@ -207,6 +208,11 @@ Maps.Add("XP4_FD", "Markaz Monolith");
 Maps.Add("XP4_Parl", "Azadi Palace");
 Maps.Add("XP4_Quake", "Epicenter");
 Maps.Add("XP4_Rubble", "Talah Market");
+// End Game maps
+Maps.Add("XP5_001", "Operation Riverside");
+Maps.Add("XP5_002", "Nebandan Flats");
+Maps.Add("XP5_003", "Kiasar Railroad");
+Maps.Add("XP5_004", "Sabalan Pipeline");
 
 /* BF3 friendly game modes */
 Dictionary<string, string> Modes = new Dictionary<string, string>();    
@@ -228,13 +234,16 @@ Modes.Add("TeamDeathMatchC0", "TDM Close Quarters");
 Modes.Add("TankSuperiority0","Tank Superiority");
 // Aftermath modes
 Modes.Add("Scavenger0","Scavenger");
+// End Game modes
+Modes.Add("AirSuperiority0","Air Superiority");
+Modes.Add("CaptureTheFlag0","CaptureTheFlag");
 
 if( !Maps.ContainsKey(server.MapFileName) || 
-        !Maps.ContainsKey(server.NextMapFileName) || 
-        !Modes.ContainsKey(server.NextGamemode) )
+	!Maps.ContainsKey(server.NextMapFileName) || 
+	!Modes.ContainsKey(server.NextGamemode) )
 {
-        plugin.ConsoleWrite(plugin.R("[One of the NextMapInfo limits] ERROR: Map name or gametype name not found in dictionary"));
-        return false;
+	plugin.ConsoleWrite(plugin.R("[One of the NextMapInfo limits] ERROR: Map name or gametype name not found in dictionary"));
+	return false;
 }
 // -----------------------------------------------------------------------
 //
@@ -258,49 +267,49 @@ plugin.ConsoleWrite(plugin.R("%p_n%: !nextmap"));
 // requires gametype match, population within the defined range, and maybe a server name match
 for( int i=0; i < numAnnouncements; i++ )
 {
-        foreach( string gameType in announcementGameTypes[i] )
-        {
-                if( (server.Gamemode == gameType) &&
-                        (server.PlayerCount >= announcementMinPlayers[i]) &&
-                        (server.PlayerCount <= announcementMaxPlayers[i]) &&
-                        (
-                                !announcementServerNameMatchRequired[i] ||
-                                (announcementServerName1[i] == server.Name) ||
-                                (announcementServerName2[i] == server.Name) 
-                        ) &&
-                        !announcementFound )
-                {
-                        // match.  We will use this announcement.
-                        gameTypeSwitchingAnnouncementIndex = i;
-                        // stop searching -- prevents us from matching other announcements
-                        // (e.g. we have two conquest announcements, don't want to require a server name
-                        // match for both if not needed)
-                        announcementFound = true;
-                }
-        }
+	foreach( string gameType in announcementGameTypes[i] )
+	{
+		if( (server.Gamemode == gameType) &&
+			(server.PlayerCount >= announcementMinPlayers[i]) &&
+			(server.PlayerCount <= announcementMaxPlayers[i]) &&
+			(
+				!announcementServerNameMatchRequired[i] ||
+				(announcementServerName1[i] == server.Name) ||
+				(announcementServerName2[i] == server.Name) 
+			) &&
+			!announcementFound )
+		{
+			// match.  We will use this announcement.
+			gameTypeSwitchingAnnouncementIndex = i;
+			// stop searching -- prevents us from matching other announcements
+			// (e.g. we have two conquest announcements, don't want to require a server name
+			// match for both if not needed)
+			announcementFound = true;
+		}
+	}
 }
 
 if( !announcementFound )
 {
-        plugin.ConsoleWrite( "ERROR: No matching announcement found for next map announcement." );
-        return false;
+	plugin.ConsoleWrite( "ERROR: No matching announcement found for next map announcement." );
+	return false;
 }
 
 // OK, now print messaging, starting with any enqueued messages.
 foreach( string msg in announcementText[gameTypeSwitchingAnnouncementIndex.Value] )
 {
-        // replace the %m and %s substrings as appropriate, based on whether another round is left in this map
-        // Note that server.TotalRounds is equal to current round number MINUS ONE (i.e. counting starts at zero), so the math on the next line looks weird:
-        if( (server.TotalRounds - server.CurrentRound) > 1 )
-        {
-                replacedMsg = msg.Replace( "%m", Maps[server.MapFileName] );
-                replacedMsg = replacedMsg.Replace( "%s", " (teams switch sides)" );
-        }
-        else
-        {
-                replacedMsg = msg.Replace( "%m", Maps[server.NextMapFileName] );
-                replacedMsg = replacedMsg.Replace( "%s", "" );
-        }
-        
-        plugin.ServerCommand( "admin.say", replacedMsg, "player", player.Name );
-}"
+	// replace the %m and %s substrings as appropriate, based on whether another round is left in this map
+	// Note that server.TotalRounds is equal to current round number MINUS ONE (i.e. counting starts at zero), so the math on the next line looks weird:
+	if( (server.TotalRounds - server.CurrentRound) > 1 )
+	{
+		replacedMsg = msg.Replace( "%m", Maps[server.MapFileName] );
+		replacedMsg = replacedMsg.Replace( "%s", " (teams switch sides)" );
+	}
+	else
+	{
+		replacedMsg = msg.Replace( "%m", Maps[server.NextMapFileName] );
+		replacedMsg = replacedMsg.Replace( "%s", "" );
+	}
+	
+	plugin.ServerCommand( "admin.say", replacedMsg, "player", player.Name );
+}
