@@ -47,74 +47,98 @@ Below is an example of 4 different announcements. Please use this example to bui
 These examples are from the Main server
 
 // damavand rush
-announcementGameTypes[0].Add( ""RushLarge0"" ); //Game types can be found in "BF3 friendly game modes" section
+announcementGameTypes[0].Add( "RushLarge0" ); //Game types can be found in "BF3 friendly game modes" section
 announcementMinPlayers[0] = 1;
 announcementMaxPlayers[0] = 64;
 announcementServerNameMatchRequired[0] = true;
-announcementServerName1[0] = ""PURE BATTLEFIELD: Damavand Rush madness!"";
-announcementServerName2[0] = ""PURE BATTLEFIELD: Defaults | $25 TS giveaway Sat"";
-announcementText[0].Add( ""Next map is based on players at start of next round:"" );
-announcementText[0].Add( ""> 20: Random map from \""Popular Rush\"" rotation"" );
-announcementText[0].Add( ""> 32: Random map from \""Popular Conquest\"" rotation"" );
-announcementText[0].Add( ""Damavand Peak repeats until then."" );
+announcementServerName1[0] = "PURE BATTLEFIELD: Damavand Rush madness!";
+announcementServerName2[0] = "PURE BATTLEFIELD: Defaults | $25 TS giveaway Sat";
+announcementText[0].Add( "Next map is based on players at start of next round:" );
+announcementText[0].Add( "> 20: Random map from \"Popular Rush\" rotation" );
+announcementText[0].Add( "> 32: Random map from \"Popular Conquest\" rotation" );
+announcementText[0].Add( "Damavand Peak repeats until then." );
 
 // popular rush
-announcementGameTypes[1].Add( ""RushLarge0"" );
+announcementGameTypes[1].Add( "RushLarge0" );
 announcementMinPlayers[1] = 1;
 announcementMaxPlayers[1] = 64;
 announcementServerNameMatchRequired[1] = false;
-announcementServerName1[1] = """";
-announcementServerName2[1] = """";
-announcementText[1].Add( ""Next map is based on players at start of next round:"" );
-announcementText[1].Add( ""> 40: Random map from \""Popular Conquest\"" rotation"" );
-announcementText[1].Add( ""< 10: Damavand Peak"" );
-announcementText[1].Add( ""Otherwise: %m%s"" );
+announcementServerName1[1] = "";
+announcementServerName2[1] = "";
+announcementText[1].Add( "Next map is based on players at start of next round:" );
+announcementText[1].Add( "> 40: Random map from \"Popular Conquest\" rotation" );
+announcementText[1].Add( "< 10: Damavand Peak" );
+announcementText[1].Add( "Otherwise: %m%s" );
 
 // popular conquest
 // this must come before the other conquest because it has a server name match.
-announcementGameTypes[2].Add( ""ConquestLarge0"" );
-announcementGameTypes[2].Add( ""ConquestAssaultLarge0"" );
+announcementGameTypes[2].Add( "ConquestLarge0" );
+announcementGameTypes[2].Add( "ConquestAssaultLarge0" );
 announcementMinPlayers[2] = 1;
 announcementMaxPlayers[2] = 64;
 announcementServerNameMatchRequired[2] = true;
-announcementServerName1[2] = ""PURE BATTLEFIELD: Reddit | Default gameplay | TeamSpeak"";
-announcementServerName2[2] = ""PURE BATTLEFIELD: Defaults | $25 TS giveaway Sat!"";
-announcementText[2].Add( ""Next map is based on players at start of next round:"" );
-announcementText[2].Add( ""> 52: Random map from \""Full Conquest\"" rotation"" );
-announcementText[2].Add( ""< 32: Random map from \""Popular Rush\"" rotation"" );
-announcementText[2].Add( ""Otherwise: %m"" );
+announcementServerName1[2] = "PURE BATTLEFIELD: Reddit | Default gameplay | TeamSpeak";
+announcementServerName2[2] = "PURE BATTLEFIELD: Defaults | $25 TS giveaway Sat!";
+announcementText[2].Add( "Next map is based on players at start of next round:" );
+announcementText[2].Add( "> 52: Random map from \"Full Conquest\" rotation" );
+announcementText[2].Add( "< 32: Random map from \"Popular Rush\" rotation" );
+announcementText[2].Add( "Otherwise: %m" );
 
 // full conquest (lower population)
-announcementGameTypes[3].Add( ""ConquestLarge0"" );
-announcementGameTypes[3].Add( ""ConquestAssaultLarge0"" );
+announcementGameTypes[3].Add( "ConquestLarge0" );
+announcementGameTypes[3].Add( "ConquestAssaultLarge0" );
 announcementMinPlayers[3] = 1;
 announcementMaxPlayers[3] = 45;
 announcementServerNameMatchRequired[3] = false;
-announcementServerName1[3] = """";
-announcementServerName2[3] = """";
-announcementText[3].Add( ""Next map is based on players at start of next round:"" );
-announcementText[3].Add( ""< 32: Random map from \""Popular Rush\"" rotation"" );
-announcementText[3].Add( ""Otherwise: %m"" );
+announcementServerName1[3] = "";
+announcementServerName2[3] = "";
+announcementText[3].Add( "Next map is based on players at start of next round:" );
+announcementText[3].Add( "< 32: Random map from \"Popular Rush\" rotation" );
+announcementText[3].Add( "Otherwise: %m" );
 
 // full conquest (higher population)
-announcementGameTypes[4].Add( ""ConquestLarge0"" );
-announcementGameTypes[4].Add( ""ConquestAssaultLarge0"" );
+announcementGameTypes[4].Add( "ConquestLarge0" );
+announcementGameTypes[4].Add( "ConquestAssaultLarge0" );
 announcementMinPlayers[4] = 46;
 announcementMaxPlayers[4] = 64;
 announcementServerNameMatchRequired[4] = false;
-announcementServerName1[4] = """";
-announcementServerName2[4] = """";
-announcementText[4].Add( ""Next map: %m"" );
+announcementServerName1[4] = "";
+announcementServerName2[4] = "";
+announcementText[4].Add( "Next map: %m" );
 */
 
 // damavand rush
-announcementGameTypes[0].Add( "RushLarge0" );
+announcementGameTypes[0].Add( "RushLarge0" ); //Game types can be found in "BF3 friendly game modes" section
 announcementMinPlayers[0] = 1;
 announcementMaxPlayers[0] = 32;
-announcementServerNameMatchRequired[0] = false;
-announcementServerName1[0] = "";
-announcementServerName2[0] = "";
-announcementText[0].Add( "Next map: %m" );
+announcementServerNameMatchRequired[0] = true;
+announcementServerName1[0] = "PURE BATTLEFIELD 2: Damavand Rush madness!";
+announcementText[0].Add( "Next map is based on players at start of next round:" );
+announcementText[0].Add( "> 16: Random map from \"Popular Rush\" rotation" );
+announcementText[0].Add( "> 24: Random map from \"Full Rush\" rotation" );
+announcementText[0].Add( "Damavand Peak repeats until then." );
+
+// popular rush
+announcementGameTypes[1].Add( "RushLarge0" );
+announcementMinPlayers[1] = 1;
+announcementMaxPlayers[1] = 32;
+announcementServerNameMatchRequired[1] = false;
+announcementServerName1[1] = "";
+announcementServerName2[1] = "";
+announcementText[1].Add( "Next map is based on players at start of next round:" );
+announcementText[1].Add( "> 24: Random map from \"Full Rush\" rotation" );
+announcementText[1].Add( "< 10: Damavand Peak" );
+announcementText[1].Add( "Otherwise: %m%s" );
+
+
+// Full Rush
+announcementGameTypes[2].Add( "RushLarge0" );
+announcementMinPlayers[2] = 1;
+announcementMaxPlayers[2] = 32;
+announcementServerNameMatchRequired[2] = false;
+announcementServerName1[2] = "";
+announcementServerName2[2] = "";
+announcementText[2].Add( "Next map: %m" );
 
 // -----------------------------------------------------------------------
 //
