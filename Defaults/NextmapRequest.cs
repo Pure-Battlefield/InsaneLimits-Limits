@@ -1,3 +1,5 @@
+//Content in the ANNOUNCEMENTS section NEEDS to be customized for each server and must match between !nextmap limit and Announce Next Map and Mode limit (starting at line 44).
+
 // -----------------------------------------------------------------------
 //
 // DEFINITIONS AND TRIGGER CRITIERA FOR GAMETYPE SWITCHING ANNOUNCEMENTS
@@ -33,17 +35,19 @@ for( int i=0; i < numAnnouncements; i++ )
 
 // -----------------------------------------------------------------------
 //
-// NORMAL
+// ANNOUNCEMENTS
 //
 // -----------------------------------------------------------------------
 
-// damavand peak rush.  
-// this must come before the other rush because it has a server name match.
-announcementGameTypes[0].Add( "RushLarge0" );
+/*
+Below is an example of 4 different announcements. Please use this example to build the announcements for each server.
+These examples are from the Main server
+
+announcementGameTypes[0].Add( "RushLarge0" ); //Game types can be referenced around line 153
 announcementMinPlayers[0] = 1;
 announcementMaxPlayers[0] = 64;
 announcementServerNameMatchRequired[0] = true;
-announcementServerName1[0] = "PURE BATTLEFIELD: Damavand Rush morning madness!";
+announcementServerName1[0] = "PURE BATTLEFIELD: Damavand Rush madness!";
 announcementServerName2[0] = "PURE BATTLEFIELD: Defaults | $25 TS giveaway Sat";
 announcementText[0].Add( "Next map is based on players at start of next round:" );
 announcementText[0].Add( "> 20: Random map from \"Popular Rush\" rotation" );
@@ -97,46 +101,6 @@ announcementServerNameMatchRequired[4] = false;
 announcementServerName1[4] = "";
 announcementServerName2[4] = "";
 announcementText[4].Add( "Next map: %m" );
-
-/*
-// -----------------------------------------------------------------------
-//
-// IMMEDIATELY POST-AFTERMATH
-//
-// -----------------------------------------------------------------------
-
-// scavenger  
-announcementGameTypes[0].Add( "Scavenger0" );
-announcementMinPlayers[0] = 1;
-announcementMaxPlayers[0] = 64;
-announcementServerNameMatchRequired[0] = false;
-announcementServerName1[0] = "";
-announcementServerName2[0] = "";
-announcementText[0].Add( "Next map is based on players at start of next round:" );
-announcementText[0].Add( "> 40: Random Aftermath map on Conquest" );
-announcementText[0].Add( "Otherwise: %m" );
-
-// conquest (lower population)
-announcementGameTypes[1].Add( "ConquestLarge0" );
-announcementGameTypes[1].Add( "ConquestAssaultLarge0" );
-announcementMinPlayers[1] = 1;
-announcementMaxPlayers[1] = 45;
-announcementServerNameMatchRequired[1] = false;
-announcementServerName1[1] = "";
-announcementServerName2[1] = "";
-announcementText[1].Add( "Next map is based on players at start of next round:" );
-announcementText[1].Add( "< 32: Random Aftermath map on Scavenger" );
-announcementText[1].Add( "Otherwise: %m" );
-
-// conquest (higher population)
-announcementGameTypes[2].Add( "ConquestLarge0" );
-announcementGameTypes[2].Add( "ConquestAssaultLarge0" );
-announcementMinPlayers[2] = 46;
-announcementMaxPlayers[2] = 64;
-announcementServerNameMatchRequired[2] = false;
-announcementServerName1[2] = "";
-announcementServerName2[2] = "";
-announcementText[2].Add( "Next map: %m" );
 */
 
 // -----------------------------------------------------------------------
