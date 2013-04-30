@@ -12,7 +12,7 @@ if( (player.RoundsTotal > 0) ||
 // -----------------------------------------------------------------------
 
 // detecting seeding mode
-string seedingServerName1 = "PURE BATTLEFIELD: Damavand Rush madness!"; // Name of server during seeding rotation
+string seedingServerName1 = "PURE BATTLEFIELD 1: Damavand Rush madness!"; // Name of server during seeding rotation
 string seedingServerName2 = "PURE BATTLEFIELD: Defaults | $25 TS giveaway Sat"; // 2nd name if there is a promotion
 string seedingGameType = "RushLarge0";
 
