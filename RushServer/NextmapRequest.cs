@@ -1,4 +1,4 @@
-//Content in the ANNOUNCEMENTS section NEEDS to be customized for each server (starting at line 106).
+//Content in the ANNOUNCEMENTS section NEEDS to be customized for each server and must match between !nextmap limit and Announce Next Map and Mode limit (starting at line 44).
 
 // -----------------------------------------------------------------------
 //
