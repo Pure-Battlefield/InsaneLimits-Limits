@@ -13,7 +13,7 @@ if( (player.RoundsTotal > 0) ||
 
 // detecting seeding mode
 string seedingServerName1 = "PURE BATTLEFIELD 2: Damavand Rush madness!"; // Name of server during seeding rotation
-string seedingServerName2 = "PURE BATTLEFIELD 2: Rush | Defaults | Friendly | Teamplay"; // 2nd name if there is a promotion
+string seedingServerName2 = ""; // 2nd name if there is a promotion
 string seedingGameType = "RushLarge0"; // game type examples RushLarge0, ConquestLarge0, TeamDeathMatch0. See AnnounceNextMapAndModes.cs for more
 
 // constants for messages
