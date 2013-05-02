@@ -210,6 +210,11 @@ Maps.Add("XP4_FD", "Markaz Monolith");
 Maps.Add("XP4_Parl", "Azadi Palace");
 Maps.Add("XP4_Quake", "Epicenter");
 Maps.Add("XP4_Rubble", "Talah Market");
+// End Game maps
+Maps.Add("XP5_001", "Operation Riverside");
+Maps.Add("XP5_002", "Nebandan Flats");
+Maps.Add("XP5_003", "Kiasar Railroad");
+Maps.Add("XP5_004", "Sabalan Pipeline");
 
 
 /* BF3 friendly game modes */
@@ -232,6 +237,10 @@ Modes.Add("TeamDeathMatchC0", "TDM Close Quarters");
 Modes.Add("TankSuperiority0","Tank Superiority");
 // Aftermath modes
 Modes.Add("Scavenger0","Scavenger");
+// End Game modes
+Modes.Add("AirSuperiority0","Air Superiority");
+Modes.Add("CaptureTheFlag0","CaptureTheFlag");
+
 
 if( !Maps.ContainsKey(server.MapFileName) || 
         !Maps.ContainsKey(server.NextMapFileName) || 
