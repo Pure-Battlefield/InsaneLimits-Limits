@@ -9,7 +9,7 @@ if( limit.Activations() > 1 )
 //
 // -----------------------------------------------------------------------
 
-int numAnnouncements = 5;
+int numAnnouncements = 4;
 
 // This is not a struct because InsaneLimits was throwing all kinds of fucked-up
 // compile errors when I tried to make it a struct and I eventually gave up.
@@ -122,23 +122,33 @@ announcementText[0].Add( "Damavand Peak repeats until then." );
 announcementGameTypes[1].Add( "RushLarge0" );
 announcementMinPlayers[1] = 1;
 announcementMaxPlayers[1] = 32;
-announcementServerNameMatchRequired[1] = false;
-announcementServerName1[1] = "";
+announcementServerNameMatchRequired[1] = true;
+announcementServerName1[1] = "PURE BATTLEFIELD 2: Rush | Defaults | Friendly | Teamplay";
 announcementServerName2[1] = "";
 announcementText[1].Add( "Next map is based on players at start of next round:" );
 announcementText[1].Add( "> 24: Random map from \"Full Rush\" rotation" );
 announcementText[1].Add( "< 10: Damavand Peak" );
-announcementText[1].Add( "Otherwise: %m%s" );
+announcementText[1].Add( "Otherwise: %m" );
 
-
-// Full Rush
+// Full Rush - lower population
 announcementGameTypes[2].Add( "RushLarge0" );
 announcementMinPlayers[2] = 1;
-announcementMaxPlayers[2] = 32;
-announcementServerNameMatchRequired[2] = false;
-announcementServerName1[2] = "";
+announcementMaxPlayers[2] = 20;
+announcementServerNameMatchRequired[2] = true;
+announcementServerName1[2] = "PURE BATTLEFIELD 2: Rush | Friendly | Teamplay | All maps";
 announcementServerName2[2] = "";
-announcementText[2].Add( "Next map: %m" );
+announcementText[2].Add( "Next map is based on players at start of next round:" );
+announcementText[2].Add( "< 10: Damavand Peak" );
+announcementText[2].Add( "Otherwise: %m" );
+
+// Full Rush - higher population
+announcementGameTypes[3].Add( "RushLarge0" );
+announcementMinPlayers[3] = 21;
+announcementMaxPlayers[3] = 32;
+announcementServerNameMatchRequired[3] = true;
+announcementServerName1[3] = "PURE BATTLEFIELD 2: Rush | Friendly | Teamplay | All maps";
+announcementServerName2[3] = "";
+announcementText[3].Add( "Next map: %m" );
 
 // -----------------------------------------------------------------------
 //
@@ -183,7 +193,11 @@ Maps.Add("XP4_FD", "Markaz Monolith");
 Maps.Add("XP4_Parl", "Azadi Palace");
 Maps.Add("XP4_Quake", "Epicenter");
 Maps.Add("XP4_Rubble", "Talah Market");
-
+// End Game maps
+Maps.Add("XP5_001", "Operation Riverside");
+Maps.Add("XP5_002", "Nebandan Flats");
+Maps.Add("XP5_003", "Kiasar Railroad");
+Maps.Add("XP5_004", "Sabalan Pipeline");
 
 /* BF3 friendly game modes */
 Dictionary<string, string> Modes = new Dictionary<string, string>();    
@@ -205,6 +219,10 @@ Modes.Add("TeamDeathMatchC0", "TDM Close Quarters");
 Modes.Add("TankSuperiority0","Tank Superiority");
 // Aftermath modes
 Modes.Add("Scavenger0","Scavenger");
+// End Game modes
+Modes.Add("AirSuperiority0","Air Superiority");
+Modes.Add("CaptureTheFlag0","CaptureTheFlag");
+
 
 if( !Maps.ContainsKey(server.MapFileName) || 
         !Maps.ContainsKey(server.NextMapFileName) || 
