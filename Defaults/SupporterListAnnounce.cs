@@ -41,7 +41,7 @@ foreach( PlayerInfoInterface p in players )
 
 if( found )
 {
-	string introText = "Thanks to our donors & volunteers currently online: ";
+	string introText = "Thanks to our active donors & volunteers online: ";
 	plugin.ServerCommand("admin.say", introText + supporterList, "player", player.Name);
 }
 
