@@ -31,13 +31,12 @@ int maxPopulationForAnnouncingJoiners = 24;
 string greet_1 = "Welcome to PURE BATTLEFIELD!";
 string greet_2 = "Please type !help for server rules and other commands.";
 string greet_3 = "We are an open gaming community; all are welcome.";
-string greet_4 = "Join us at purebattlefield.reddit.com!";
+string greet_4 = "Join us at purebattlefieldorg!";
 
 // Seeding welcome message: Shown in chat if server is seeding
 List<String> seed = new List<String>();
 seed.Add("Attention, soldier! Let's get this server going!");
-seed.Add("We'll notify you when others join (up to " + maxPopulationForAnnouncingJoiners + " players).");
-seed.Add("We run " + seedingMapName + " until we exceed " + maxPopulationForSeeding + " players." );
+seed.Add("We run Damavand Rush until we get more players." );
 seed.Add("Please type !help for server rules and other commands.");
 
 // string seedingGameTypeName = "Rush";
