@@ -118,23 +118,33 @@ announcementText[0].Add( "Damavand Peak repeats until then." );
 announcementGameTypes[1].Add( "RushLarge0" );
 announcementMinPlayers[1] = 1;
 announcementMaxPlayers[1] = 32;
-announcementServerNameMatchRequired[1] = false;
-announcementServerName1[1] = "";
+announcementServerNameMatchRequired[1] = true;
+announcementServerName1[1] = "PURE BATTLEFIELD 2: Rush | Defaults | Friendly | Teamplay";
 announcementServerName2[1] = "";
 announcementText[1].Add( "Next map is based on players at start of next round:" );
 announcementText[1].Add( "> 24: Random map from \"Full Rush\" rotation" );
 announcementText[1].Add( "< 10: Damavand Peak" );
-announcementText[1].Add( "Otherwise: %m%s" );
+announcementText[1].Add( "Otherwise: %m" );
 
-
-// Full Rush
+// Full Rush - lower population
 announcementGameTypes[2].Add( "RushLarge0" );
 announcementMinPlayers[2] = 1;
-announcementMaxPlayers[2] = 32;
-announcementServerNameMatchRequired[2] = false;
-announcementServerName1[2] = "";
+announcementMaxPlayers[2] = 20;
+announcementServerNameMatchRequired[2] = true;
+announcementServerName1[2] = "PURE BATTLEFIELD 2: Rush | Friendly | Teamplay | All maps";
 announcementServerName2[2] = "";
-announcementText[2].Add( "Next map: %m" );
+announcementText[2].Add( "Next map is based on players at start of next round:" );
+announcementText[2].Add( "< 10: Damavand Peak" );
+announcementText[2].Add( "Otherwise: %m" );
+
+// Full Rush - higher population
+announcementGameTypes[3].Add( "RushLarge0" );
+announcementMinPlayers[3] = 21;
+announcementMaxPlayers[3] = 32;
+announcementServerNameMatchRequired[3] = true;
+announcementServerName1[3] = "PURE BATTLEFIELD 2: Rush | Friendly | Teamplay | All maps";
+announcementServerName2[3] = "";
+announcementText[3].Add( "Next map: %m" );
 
 // -----------------------------------------------------------------------
 //
