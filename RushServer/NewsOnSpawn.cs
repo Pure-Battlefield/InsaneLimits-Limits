@@ -11,10 +11,10 @@ if(        !(
 
 /* NEWS SECTION */
   	
-string news_1 = "SERVER NEWS: 4/30"; 
-string news_2 = "Please bear with us"; 
-string news_3 = "while we test some new";
-string news_4 = "configurations";
+string news_1 = "SERVER NEWS: May 10th"; 
+string news_2 = "If you're new to Pure Battlefield, try joining your"; 
+string news_3 = "squad on TeamSpeak!  Type !tsinfo for details.";
+string news_4 = "PURE Conquest server: server1.purebattlefield.org";
 
 List<string> News = new List<string>(); 
 News.Add(news_1);
