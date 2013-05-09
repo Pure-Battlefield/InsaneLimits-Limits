@@ -24,8 +24,10 @@ foreach(String chatword in chatwords)
 			{
 				plugin.ConsoleWrite( plugin.R("[!listadmins limit]: %p_n%: !listadmins") );
 
-				String adminList = "Admins online: ";
-				bool found = false;
+				String homeAdminList = "Admins online: ";
+				String visitAdminList = "Visiting admins form other PURE servers: ";
+				bool hfound = false;
+				bool vfound = false;
 				List<PlayerInfoInterface> players = new List<PlayerInfoInterface>();
 					players.AddRange(team1.players);
 					players.AddRange(team2.players);
@@ -36,20 +38,45 @@ foreach(String chatword in chatwords)
 
 				foreach (PlayerInfoInterface p in players)
 				{
-						if (plugin.isInList(p.Name, "admins"))
+						//build the home admin list
+						if (plugin.isInList(p.Name, "homeAdmins"))
 						{
-								if (found)
-								adminList = adminList + ", " + p.Name;
+								if (hfound)
+								homeAdminList = homeAdminList + ", " + p.Name;
 								else
-								adminList = adminList + p.Name;
-								found = true;
+								homeAdminList = homeAdminList + p.Name;
+								hfound = true;
+						}
+						
+						//buld the visiting admin list
+						if (plugin.isInList(p.Name, "visitAdmins"))
+						{
+								if (vfound)
+								visitAdminList = visitAdminList + ", " + p.Name;
+								else
+								visitAdminList = visitAdminList + p.Name;
+								vfound = true;
 						}
 				}
         
-				if (found)
+				// if we found home admins, list them for the player
+				if (hfound)
+				{
+						
+						plugin.ServerCommand("admin.say", homeAdminList, "player", player.Name);
+						
+				}
+				
+				//if we found visiting admins, list them for the player
+				if (vfound)
+				{
+						plugin.ServerCommand("admin.say", visitAdminList, "player", player.Name);
+				}
+        
+				//if ANY admins were found, show how to send them a message
+				if ( (vfound) || (hfound) )
 				{
 						string msg0 = "You may send a message to all online admins by typing !pageadmins [message].";
-							plugin.ServerCommand("admin.say", adminList, "player", player.Name);
 						plugin.ServerCommand("admin.say", msg0, "player", player.Name);
 				}
 				else

@@ -22,7 +22,7 @@ if (Regex.Match(command, @"^pageadmin(s)?\s+.+$", RegexOptions.IgnoreCase).Succe
         List<string> adminsOnline = new List<string>();
         foreach (PlayerInfoInterface p in players) 
         {
-                if (plugin.isInList(p.Name, "admins")) 
+                if (plugin.isInList(p.Name, "homeAdmins") || plugin.isInList(p.Name, "visitAdmins")) 
                 {
                         adminsOnline.Add(p.Name);
                 }

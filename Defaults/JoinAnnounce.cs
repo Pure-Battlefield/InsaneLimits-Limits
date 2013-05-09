@@ -12,7 +12,7 @@ int maxPopulationForPlayerJoinAnnouncements = 24;
 //
 // -----------------------------------------------------------------------
 
-if ( plugin.isInList ( player.Name, "admins" ) )
+if ( plugin.isInList ( player.Name, "homeAdmins" ) )
 {
         // this is an admin joining
         plugin.SendGlobalMessage(plugin.R("Admin %p_n% is joining the server."));

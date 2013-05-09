@@ -9,7 +9,7 @@ if( Regex.Match(player.LastChat, @"^\s*[!/][!/]?(adminhelp2)$", RegexOptions.Ign
 
         plugin.ConsoleWrite(plugin.R("%p_n%: /!adminhelp2"));
 
-        if ( plugin.isInList ( player.Name, "admins" ) )
+        if ( plugin.isInList ( player.Name, "homeAdmins" ) || plugin.isInList (player.Name, "visitAdmins" ) )
         {
                 foreach(string X in ADM)
                         plugin.ServerCommand("admin.say", X, "player", player.Name);
