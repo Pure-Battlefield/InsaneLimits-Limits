@@ -19,30 +19,52 @@ if (Regex.Match(command, @"^pageadmin(s)?\s+.+$", RegexOptions.IgnoreCase).Succe
         players.AddRange(team1.players);
         players.AddRange(team2.players);
         
-        List<string> adminsOnline = new List<string>();
+        List<string> homeAdminsOnline = new List<string>();
+        	List<string> visitAdminsOnline = new List<string>();
         foreach (PlayerInfoInterface p in players) 
         {
-                if (plugin.isInList(p.Name, "homeAdmins") || plugin.isInList(p.Name, "visitAdmins")) 
+                if (plugin.isInList(p.Name, "homeAdmins") ) 
                 {
-                        adminsOnline.Add(p.Name);
+                        homeAdminsOnline.Add(p.Name);
                 }
+				if (plugin.isInList(p.Name, "visitAdmins") )
+				{
+						visitAdminsOnline.Add(p.Name);
+				}
         }
-        if(adminsOnline.Count > 0)
+        if(homeAdminsOnline.Count > 0)
         {
                 /* Make the comma separated list of admin names */
-                string adminListString = String.Join(", ", adminsOnline.ToArray(), 0, adminsOnline.Count);
+                string adminListString = String.Join(", ", homeAdminsOnline.ToArray(), 0, homeAdminsOnline.Count);
                 string[] playerCommand = command.Split(' ');
                 string playerMessage = String.Join(" ", playerCommand, 1, playerCommand.Length -1);
                                 
                 plugin.ServerCommand("admin.say", "Your message has been sent to all admins currently on the server: " + adminListString, "player", player.Name);
                 
-                foreach(string adminName in adminsOnline)
+                foreach(string adminName in homeAdminsOnline)
                 {
                         plugin.ServerCommand("admin.yell", "Admin page from " + player.Name + ": " + playerMessage, "30", "player", adminName);
                         plugin.ServerCommand("admin.say", "Admin page from " + player.Name + ": " + playerMessage, "player", adminName);
                 }
+			return false;	
         }
-        else
+        if(visitAdminsOnline.Count > 0)
+		{
+                /* Make the comma separated list of admin names */
+                string adminListString = String.Join(", ", visitAdminsOnline.ToArray(), 0, visitAdminsOnline.Count);
+                string[] playerCommand = command.Split(' ');
+                string playerMessage = String.Join(" ", playerCommand, 1, playerCommand.Length -1);
+                                
+                plugin.ServerCommand("admin.say", "Your message has been sent to all admins currently on the server: " + adminListString, "player", player.Name);
+                
+                foreach(string adminName in visitAdminsOnline)
+                {
+                        plugin.ServerCommand("admin.yell", "Admin page from " + player.Name + ": " + playerMessage, "30", "player", adminName);
+                        plugin.ServerCommand("admin.say", "Admin page from " + player.Name + ": " + playerMessage, "player", adminName);
+                }
+			return false;	
+        }		
+		else
         {
                 string noAdmins = "No admins are currently on the server, so the admin team is being paged by phone.  We will try to respond ASAP.";
                 plugin.ServerCommand("admin.say", noAdmins, "player", player.Name);
