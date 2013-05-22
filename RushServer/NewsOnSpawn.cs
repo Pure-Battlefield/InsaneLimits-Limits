@@ -14,7 +14,7 @@ if(        !(
 string news_1 = "SERVER NEWS: May 21st"; 
 string news_2 = "Don't forget to join our TeamSpeak Server!"; 
 string news_3 = "Join us at teamspeak.purebattlefield.org";
-string news_4 = "Type in "!tsinfo" for more information!";
+string news_4 = "Type in \"!tsinfo\" for more information!";
 
 List<string> News = new List<string>(); 
 News.Add(news_1);
