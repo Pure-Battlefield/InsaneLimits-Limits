@@ -25,7 +25,7 @@ foreach(String chatword in chatwords)
 				plugin.ConsoleWrite( plugin.R("[!listadmins limit]: %p_n%: !listadmins") );
 
 				String homeAdminList = "Admins online: ";
-				String visitAdminList = "Visiting admins form other PURE servers: ";
+				String visitAdminList = "Visiting admins from other PURE servers: ";
 				bool hfound = false;
 				bool vfound = false;
 				List<PlayerInfoInterface> players = new List<PlayerInfoInterface>();
