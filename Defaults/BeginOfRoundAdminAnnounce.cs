@@ -10,7 +10,7 @@ if(
         return false; 
 
 String homeAdminList = "Admins online: ";
-String visitAdminList = "Visiting admins form other PURE servers: ";
+String visitAdminList = "Visiting admins from other PURE servers: ";
 int hfound = 0;
 bool vfound = false;
 
