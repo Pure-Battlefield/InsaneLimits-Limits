@@ -110,30 +110,30 @@ announcementText[4].Add( "Next map: %m" );
 // damavand rush
 announcementGameTypes[0].Add( "RushLarge0" ); //Game types can be found in "BF3 friendly game modes" section
 announcementMinPlayers[0] = 1;
-announcementMaxPlayers[0] = 32;
+announcementMaxPlayers[0] = 48;
 announcementServerNameMatchRequired[0] = true;
 announcementServerName1[0] = "PURE BATTLEFIELD 2: Damavand Rush madness!";
 announcementText[0].Add( "Next map is based on players at start of next round:" );
 announcementText[0].Add( "> 16: Random map from \"Popular Rush\" rotation" );
-announcementText[0].Add( "> 24: Random map from \"Full Rush\" rotation" );
+announcementText[0].Add( "> 36: Random map from \"Full Rush\" rotation" );
 announcementText[0].Add( "Damavand Peak repeats until then." );
 
 // popular rush
 announcementGameTypes[1].Add( "RushLarge0" );
 announcementMinPlayers[1] = 1;
-announcementMaxPlayers[1] = 32;
+announcementMaxPlayers[1] = 48;
 announcementServerNameMatchRequired[1] = true;
 announcementServerName1[1] = "PURE BATTLEFIELD 2: Rush | Defaults | Friendly | Teamplay";
 announcementServerName2[1] = "";
 announcementText[1].Add( "Next map is based on players at start of next round:" );
-announcementText[1].Add( "> 24: Random map from \"Full Rush\" rotation" );
+announcementText[1].Add( "> 36: Random map from \"Full Rush\" rotation" );
 announcementText[1].Add( "< 10: Damavand Peak" );
 announcementText[1].Add( "Otherwise: %m" );
 
 // Full Rush - lower population
 announcementGameTypes[2].Add( "RushLarge0" );
 announcementMinPlayers[2] = 1;
-announcementMaxPlayers[2] = 20;
+announcementMaxPlayers[2] = 24;
 announcementServerNameMatchRequired[2] = true;
 announcementServerName1[2] = "PURE BATTLEFIELD 2: Rush | Friendly | Teamplay | All maps";
 announcementServerName2[2] = "";
@@ -143,8 +143,8 @@ announcementText[2].Add( "Otherwise: %m" );
 
 // Full Rush - higher population
 announcementGameTypes[3].Add( "RushLarge0" );
-announcementMinPlayers[3] = 21;
-announcementMaxPlayers[3] = 32;
+announcementMinPlayers[3] = 25;
+announcementMaxPlayers[3] = 48;
 announcementServerNameMatchRequired[3] = true;
 announcementServerName1[3] = "PURE BATTLEFIELD 2: Rush | Friendly | Teamplay | All maps";
 announcementServerName2[3] = "";
