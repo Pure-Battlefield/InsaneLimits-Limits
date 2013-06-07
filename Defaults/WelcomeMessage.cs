@@ -11,17 +11,6 @@ if( (player.RoundsTotal > 0) ||
 //
 // -----------------------------------------------------------------------
 
-// detecting seeding mode
-string seedingServerName1 = "current server name for seeding rotation"; // Name of server during seeding rotation
-string seedingServerName2 = "2nd name if any"; // 2nd name if there is a promotion
-string seedingGameType = "xxxxxx"; // game type examples RushLarge0, ConquestLarge0, TeamDeathMatch0. See AnnounceNextMapAndModes.cs for more
-
-// constants for messages
-string seedingMapName = "yyyyyyy"; // name of seeding map
-int maxPopulationForSeeding = 20;
-int maxPopulationForAnnouncingJoiners = 24;
-
-
 // -----------------------------------------------------------------------
 //
 // WELCOME MESSAGES
@@ -30,15 +19,14 @@ int maxPopulationForAnnouncingJoiners = 24;
 
 // Main welcome message: Shown in yell, and also chat box if server is populated
 string greet_1 = "Welcome to PURE BATTLEFIELD!";
-string greet_2 = "Please type !help for server rules and other commands.";
+string greet_2 = "Please type !help for rules and other commands.";
 string greet_3 = "We are an open gaming community; all are welcome.";
-string greet_4 = "Join us at purebattlefield.reddit.com!";
+string greet_4 = "Join us at purebattlefield.org!";
 
-// Seeding welcome message: Shown in chat if server is seeding
+// Low Population welcome message: Shown in chat if server pop is below 20
 List<String> seed = new List<String>();
 seed.Add("Attention, soldier! Let's get this server going!");
-seed.Add("We'll notify you when others join (up to " + maxPopulationForAnnouncingJoiners + " players).");
-seed.Add("We run " + seedingMapName + " until we exceed " + maxPopulationForSeeding + " players." );
+seed.Add("We'll run Damavand Rush until we get more players.");
 seed.Add("Please type !help for server rules and other commands.");
 
 // string seedingGameTypeName = "Rush";
@@ -64,9 +52,7 @@ plugin.ServerCommand("admin.yell", yell, "20", "player", player.Name);
 
 // Are we currently seeding?
 bool currentlySeeding = false;
-if( (server.Gamemode == seedingGameType) &&
-    ((server.Name == seedingServerName1) ||
-     (server.Name == seedingServerName2))
+if( (server.PlayerCount < 20) 
   )
 {
         currentlySeeding = true;
