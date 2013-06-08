@@ -98,4 +98,4 @@ foreach( string msg in announcementText )
         }
         
         plugin.ServerCommand( "admin.say", replacedMsg, "player", player.Name );
-}"
+}
