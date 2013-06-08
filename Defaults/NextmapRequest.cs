@@ -85,8 +85,8 @@ plugin.ConsoleWrite(plugin.R("%p_n%: !nextmap"));
 foreach( string msg in announcementText )
 {
         // replace the %m and %s substrings as appropriate, based on whether another round is left in this map
-        // Note that server.TotalRounds is equal to current round number MINUS ONE (i.e. counting starts at zero), so the math on the next line looks weird:
-        if( (server.TotalRounds - server.CurrentRound) > 1 )
+		// server.TotalRounds is 1 based, and CurrentRound is 0 based, thats the reason for the funky math
+		if( server.TotalRounds - server.CurrentRound > 1 )
         {
                 replacedMsg = msg.Replace( "%m", Maps[server.MapFileName] );
                 replacedMsg = replacedMsg.Replace( "%s", " (teams switch sides)" );

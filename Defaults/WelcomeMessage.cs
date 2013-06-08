@@ -26,7 +26,6 @@ string greet_4 = "Join us at purebattlefield.org!";
 // Low Population welcome message: Shown in chat if server pop is below 20
 List<String> seed = new List<String>();
 seed.Add("Attention, soldier! Let's get this server going!");
-seed.Add("We'll run Damavand Rush until we get more players.");
 seed.Add("Please type !help for server rules and other commands.");
 
 // string seedingGameTypeName = "Rush";

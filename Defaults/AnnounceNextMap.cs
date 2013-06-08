@@ -57,7 +57,7 @@ Maps.Add("XP5_003", "Kiasar Railroad");
 Maps.Add("XP5_004", "Sabalan Pipeline");
 
 if( !Maps.ContainsKey(server.MapFileName) || 
-        !Maps.ContainsKey(server.NextMapFileName) || 
+        !Maps.ContainsKey(server.NextMapFileName) )
 {
         plugin.ConsoleWrite(plugin.R("[One of the NextMapInfo limits] ERROR: Map name not found in dictionary"));
         return false;
