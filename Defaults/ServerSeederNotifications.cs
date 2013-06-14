@@ -39,7 +39,7 @@ max_server_population[2] = 48;
 // Scenario 1 (Population critically low) variables
 int scenario_1_max_current_non_seeder_population = 6;
 int scenario_1_max_current_seeder_population = 3;
-int scenario_1_min_minutes_since_last_scenario_1_trigger_daytime = 15;
+int scenario_1_min_minutes_since_last_scenario_1_trigger_daytime = 20;
 int scenario_1_min_minutes_since_last_scenario_1_trigger_nighttime = 180;
 
 // The following variables are based on the server's time:
