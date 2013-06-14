@@ -22,7 +22,7 @@
 // 2:  Same as level 1, but override email recipients & subject line with debug values
 // 3:  Same as level 2, plus debug info sent even if no scenarios are triggered
 // 4:  Same as level 3, plus resets the "last time triggered" for all scenarios to 0
-int debug_level = 2;
+int debug_level = 1;
 string debug_email_recipients = "jhogan@purebattlefield.org";					// comma-separated list
 string debug_email_subject = "Seeder notification debug e-mail";
 
