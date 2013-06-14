@@ -407,7 +407,7 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 		email_body.Add( "nighttime_end = " + nighttime_end.ToString() );
 		email_body.Add( "current time = " + DateTime.Now.ToString() );
 		email_body.Add( "min_minutes_since_last_scenario_1_trigger = " + min_minutes_since_last_scenario_1_trigger );
-		email_body.Add( "scenario_2_max_current_server_population[" + max_server_population + "[" + server_number + "]] = " + scenario_2_max_current_server_population[max_server_population[server_number]] );
+		email_body.Add( "scenario_2_max_current_server_population[" + max_server_population[server_number] + "] = " + scenario_2_max_current_server_population[max_server_population[server_number]] );
 		email_body.Add( "" );
 		email_body.Add( "email_subject_prefix = " + email_subject_prefix );
 		email_body.Add( "" );
