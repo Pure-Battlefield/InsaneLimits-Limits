@@ -38,7 +38,7 @@ max_server_population[2] = 48;
 
 // Scenario 1 (Population critically low) variables
 int scenario_1_max_current_non_seeder_population = 6;
-int scenario_1_max_current_seeder_population = 3;
+int scenario_1_max_current_seeder_population = 2;
 int scenario_1_min_minutes_since_last_scenario_1_trigger_daytime = 20;
 int scenario_1_min_minutes_since_last_scenario_1_trigger_nighttime = 180;
 
@@ -64,7 +64,7 @@ scenario_1_email_body.Add( "Thank you for your service to PURE!" );
 int[] scenario_2_max_current_server_population = new int[65];				// defines what the threshold should be for a server of a particular max size
 scenario_2_max_current_server_population[64] = 42;
 scenario_2_max_current_server_population[48] = 30;
-int scenario_2_max_current_seeder_population = 3;
+int scenario_2_max_current_seeder_population = 2;
 int scenario_2_min_minutes_since_last_scenario_1_trigger = 180;
 int scenario_2_min_minutes_since_last_scenario_2_trigger = 180;
 
