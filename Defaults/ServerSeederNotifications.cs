@@ -56,6 +56,8 @@ scenario_1_email_body.Add( "" );
 scenario_1_email_body.Add( "Our goal is to have [ideal_seeder_population] seeders on the server; currently we have [current_seeder_population]." );
 scenario_1_email_body.Add( "[current_seeder_names]" );
 scenario_1_email_body.Add( "" );
+scenario_1_email_body.Add( "If you have a vanilla account the server is currently running expansion maps, please check back soon.  It will likely be back to a vanilla rotation before long." );
+scenario_1_email_body.Add( "" );
 scenario_1_email_body.Add( "If you join, please check the scoreboard to make sure you're not bumping the server over [ideal_seeder_population] seeders.  The current seeder accounts are listed here: [seeder_list_url]" );
 scenario_1_email_body.Add( "" );
 scenario_1_email_body.Add( "Thank you for your service to PURE!" );
@@ -83,6 +85,8 @@ scenario_2_email_body.Add( "Our goal is to have [ideal_seeder_population] seeder
 scenario_2_email_body.Add( "[current_seeder_names]" );
 scenario_2_email_body.Add( "" );
 scenario_2_email_body.Add( "At moderate server populations, seeders can greatly extend server activity into the late evening.  More importantly, having those seeders still around at the crack of dawn gives us a huge head start in the morning." );
+scenario_2_email_body.Add( "" );
+scenario_2_email_body.Add( "If you have a vanilla account the server is currently running expansion maps, please check back soon.  It will likely be back to a vanilla rotation before long." );
 scenario_2_email_body.Add( "" );
 scenario_2_email_body.Add( "If you join, please check the scoreboard to make sure you're not bumping the server over [ideal_seeder_population] seeders.  The current seeder accounts are listed here: [seeder_list_url]" );
 scenario_2_email_body.Add( "" );
