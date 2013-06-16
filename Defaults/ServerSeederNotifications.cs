@@ -51,12 +51,12 @@ int scenario_1_nighttime_end_minute = 0;
 string scenario_1_email_recipients = "seeders@purebattlefield.org";			// comma-separated list
 string scenario_1_email_subject = "All hands on deck! Seeders urgently needed!";
 List <string> scenario_1_email_body = new List <string>();
-scenario_1_email_body.Add( "The server currently has only [current_non_seeder_population] players (excluding seeders).  We need some seeder help!  Click here: [server_url]" );
+scenario_1_email_body.Add( "The server currently has only [current_non_seeder_population] players (excluding seeders).  We need some seeder help!  Click here: [server_url]" );
 scenario_1_email_body.Add( "" );
 scenario_1_email_body.Add( "Our goal is to have [ideal_seeder_population] seeders on the server; currently we have [current_seeder_population]." );
 scenario_1_email_body.Add( "[current_seeder_names]" );
 scenario_1_email_body.Add( "" );
-scenario_1_email_body.Add( "If you join, please check the scoreboard to make sure you're not bumping the server over [ideal_seeder_population] seeders.  The current seeder accounts are listed here: [seeder_list_url]" );
+scenario_1_email_body.Add( "If you join, please check the scoreboard to make sure you're not bumping the server over [ideal_seeder_population] seeders.  The current seeder accounts are listed here: [seeder_list_url]" );
 scenario_1_email_body.Add( "" );
 scenario_1_email_body.Add( "Thank you for your service to PURE!" );
 
@@ -68,17 +68,23 @@ int scenario_2_max_current_seeder_population = 2;
 int scenario_2_min_minutes_since_last_scenario_1_trigger = 180;
 int scenario_2_min_minutes_since_last_scenario_2_trigger = 180;
 
+// The following variables are based on the server's time:
+int scenario_2_silent_start_hour = 6;		
+int scenario_2_silent_start_minute = 0;
+int scenario_2_silent_end_hour = 21;
+int scenario_2_silent_end_minute = 0;
+
 string scenario_2_email_recipients = "seeders@purebattlefield.org";			// comma-separated list
 string scenario_2_email_subject = "Seeders needed on the front!";
 List <string> scenario_2_email_body = new List <string>();
-scenario_2_email_body.Add( "The server currently has [current_server_population] people on it.  We need some seeder help!  Click here: [server_url]" );
+scenario_2_email_body.Add( "The server currently has [current_server_population] people on it.  We need some seeder help!  Click here: [server_url]" );
 scenario_2_email_body.Add( "" );
 scenario_2_email_body.Add( "Our goal is to have [ideal_seeder_population] seeders on the server; currently we have [current_seeder_population]." );
 scenario_2_email_body.Add( "[current_seeder_names]" );
 scenario_2_email_body.Add( "" );
 scenario_2_email_body.Add( "At moderate server populations, seeders can greatly extend server activity into the late evening.  More importantly, having those seeders still around at the crack of dawn gives us a huge head start in the morning." );
 scenario_2_email_body.Add( "" );
-scenario_2_email_body.Add( "If you join, please check the scoreboard to make sure you're not bumping the server over [ideal_seeder_population] seeders.  The current seeder accounts are listed here: [seeder_list_url]" );
+scenario_2_email_body.Add( "If you join, please check the scoreboard to make sure you're not bumping the server over [ideal_seeder_population] seeders.  The current seeder accounts are listed here: [seeder_list_url]" );
 scenario_2_email_body.Add( "" );
 scenario_2_email_body.Add( "Thank you for your service to PURE!" );
 
@@ -89,14 +95,14 @@ int scenario_3_min_minutes_since_last_scenario_3_trigger = 20;
 string scenario_3_email_recipients = "seeders@purebattlefield.org,admins@purebattlefield.org";		// comma-separated list
 string scenario_3_email_subject = "Too many seeders -- players are being scared away!";
 List <string> scenario_3_email_body = new List <string>();
-scenario_3_email_body.Add( "The server currently has [current_idle_seeder_population] idle seeders on it.  This is too many!" );
+scenario_3_email_body.Add( "The server currently has [current_idle_seeder_population] idle seeders on it.  This is too many!" );
 scenario_3_email_body.Add( "" );
 scenario_3_email_body.Add( "Too many idle seeders can actually drive players away, because they join expecting a lively game, only to find a quiet battlefield." );
 scenario_3_email_body.Add( "" );
 scenario_3_email_body.Add( "Our goal is to have no more than [ideal_seeder_population] idle seeders on the server; currently we have [current_idle_seeder_population].");
 scenario_3_email_body.Add( "[current_idle_seeder_names]" );
 scenario_3_email_body.Add( "" );
-scenario_3_email_body.Add( "Idle seeders, please log out, or admins, please log on to kick.  Thanks!" );
+scenario_3_email_body.Add( "Idle seeders, please log out, or admins, please log on to kick.  Thanks!" );
 
 // --------------------------------------------------------------------------------------------------------------------------------------
 //
@@ -151,12 +157,17 @@ string str;
 
 // scenario 1 specific
 int min_minutes_since_last_scenario_1_trigger = 0;
+
+// notification time windows
 DateTime nighttime_start = new DateTime( 1, 1, 1, 0, 0, 0 );
 DateTime nighttime_end = new DateTime( 1, 1, 1, 0, 0, 0 );
+DateTime silent_start = new DateTime( 1, 1, 1, 0, 0, 0 );
+DateTime silent_end = new DateTime( 1, 1, 1, 0, 0, 0 );
+TimeSpan one_day = new TimeSpan( 1, 0, 0, 0 );
 
 // --------------------------------------------------------------------------------------------------------------------------------------
 //
-// GLOBAL PREP WORK
+// DETERMINE SERVER NUMBER, SERVER URL, E-MAIL PREFIX
 //
 // --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -174,6 +185,12 @@ else
 	email_subject_prefix = "[SERVER " + server_number + "] ";
 	server_url = "http://server" + server_number + ".purebattlefield.org";
 }
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+//
+// DETERMINE PLAYER COUNTS AND LISTS
+//
+// --------------------------------------------------------------------------------------------------------------------------------------
 
 // determine total number of players
 int current_server_population = server.PlayerCount;
@@ -228,6 +245,12 @@ foreach( PlayerInfoInterface p in allPlayers )
 // calculate number of non-seeders online
 current_non_seeder_population = current_server_population - current_seeder_population;
 
+// --------------------------------------------------------------------------------------------------------------------------------------
+//
+// CALCULATE TIME SINCE LAST SCENARIO TRIGGERS
+//
+// --------------------------------------------------------------------------------------------------------------------------------------
+
 // determine time since each scenario was last triggered
 TimeSpan time_since_last_scenario_1_trigger = DateTime.Now - last_scenario_1_trigger;
 TimeSpan time_since_last_scenario_2_trigger = DateTime.Now - last_scenario_2_trigger;
@@ -240,14 +263,11 @@ int minutes_since_last_scenario_3_trigger = Convert.ToInt32( Math.Truncate(time_
 
 // --------------------------------------------------------------------------------------------------------------------------------------
 //
-// SCENARIO 1 EVALUATION
+// NIGHTTIME WINDOW CALCULATIONS
 //
 // --------------------------------------------------------------------------------------------------------------------------------------
 
-// variable declarations
-TimeSpan one_day = new TimeSpan( 1, 0, 0, 0 );
-
-// We begin by figuring out whether it's daytime or nighttime (as per the definition of scenario 2)
+// We begin by figuring out whether it's daytime or nighttime (as per the definition of scenario 1)
 nighttime_start = new DateTime( DateTime.Now.Year,
 								DateTime.Now.Month,
 								DateTime.Now.Day,
@@ -264,7 +284,7 @@ nighttime_end = new DateTime(   DateTime.Now.Year,
 
 // When we initialized nighttime_start and nighttime_end above, we assumed that they were on the same day.
 // However, these times might actually span two different days (e.g. 11pm - 7am).
-// That doesn't work, because nighttime_start ends up being AFTER nighttime_end.
+// That doesn't work, because nighttime_start then ends up being AFTER nighttime_end.
 // In this case, we need to "fix" this by subtracting a day from nighttime_start, or adding a day to nighttime_end.									
 if( nighttime_end <= nighttime_start )
 {
@@ -273,9 +293,49 @@ if( nighttime_end <= nighttime_start )
 	else
 		nighttime_end += one_day;
 }
-	
-// Now check if the current time is between the start and end of nighttime, and set the
-// "minimum time since last scenario 2 notification" threshold appropriately.
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+//
+// SILENT WINDOW CALCULATIONS
+//
+// --------------------------------------------------------------------------------------------------------------------------------------
+
+// We begin by figuring out whether it's uring the silent window (as per the definition of scenario 2)
+silent_start = new DateTime( DateTime.Now.Year,
+							 DateTime.Now.Month,
+							 DateTime.Now.Day,
+							 scenario_2_silent_start_hour,
+							 scenario_2_silent_start_minute,
+							 0 );
+
+silent_end = new DateTime(   DateTime.Now.Year,
+							 DateTime.Now.Month,
+						  	 DateTime.Now.Day,
+							 scenario_2_silent_end_hour,
+							 scenario_2_silent_end_minute,
+							 0 );
+
+// When we initialized silent_start and silend_end above, we assumed that they were on the same day.
+// However, these times might actually span two different days (e.g. 11pm - 7am).
+// That doesn't work, because silent_start then ends up being AFTER silent_end.
+// In this case, we need to "fix" this by subtracting a day from silent_start, or adding a day to silent_end.									
+if( silent_end <= silent_start )
+{
+	if( DateTime.Now <= silent_end )
+		silent_start -= one_day;
+	else
+		silent_end += one_day;
+}
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+//
+// SCENARIO 1 EVALUATION
+//
+// --------------------------------------------------------------------------------------------------------------------------------------
+
+// Set the "minimum time since last scenario 1 notification" threshold appropriately, depending on whether it's nighttime or not.
 if( (DateTime.Now >= nighttime_start) &&
 	(DateTime.Now <= nighttime_end) )
 {
@@ -316,12 +376,13 @@ if( scenario_triggered == 0 )
 		(current_server_population <= scenario_2_max_current_server_population[max_server_population[server_number]]) &&
 		(current_seeder_population <= scenario_2_max_current_seeder_population) &&
 		(minutes_since_last_scenario_1_trigger >= scenario_2_min_minutes_since_last_scenario_1_trigger ) &&
-		(minutes_since_last_scenario_2_trigger >= scenario_2_min_minutes_since_last_scenario_2_trigger )
+		(minutes_since_last_scenario_2_trigger >= scenario_2_min_minutes_since_last_scenario_2_trigger ) &&
+		!((DateTime.Now >= silent_start) && (DateTime.Now <= silent_end))
 	  )
 	{
 		scenario_triggered = 2;
 		server.Data.setObject( key_last_scenario_2_trigger, DateTime.Now );
-
+		
 		email_recipients = scenario_2_email_recipients;
 		email_subject = scenario_2_email_subject;
 		email_body = scenario_2_email_body;
@@ -395,7 +456,12 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 		email_body.Add( "seconds since round started = " + Convert.ToString(server.TimeRound) );
 		email_body.Add( idle_debug_info );
 		email_body.Add( "" );
+		email_body.Add( "nighttime_start = " + nighttime_start.ToString() );
+		email_body.Add( "nighttime_end = " + nighttime_end.ToString() );
+		email_body.Add( "silent_start = " + silent_start.ToString() );
+		email_body.Add( "silent_end = " + silent_end.ToString() );
 		email_body.Add( "current time = " + DateTime.Now.ToString() );
+		email_body.Add( "" );		
 		email_body.Add( "last_scenario_1_trigger = " + last_scenario_1_trigger.ToString() );
 		email_body.Add( "last_scenario_2_trigger = " + last_scenario_2_trigger.ToString() );
 		email_body.Add( "last_scenario_3_trigger = " + last_scenario_3_trigger.ToString() );
@@ -403,9 +469,6 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 		email_body.Add( "minutes_since_last_scenario_2_trigger = " + minutes_since_last_scenario_2_trigger );
 		email_body.Add( "minutes_since_last_scenario_3_trigger = " + minutes_since_last_scenario_3_trigger );
 		email_body.Add( "" );
-		email_body.Add( "nighttime_start = " + nighttime_start.ToString() );
-		email_body.Add( "nighttime_end = " + nighttime_end.ToString() );
-		email_body.Add( "current time = " + DateTime.Now.ToString() );
 		email_body.Add( "min_minutes_since_last_scenario_1_trigger = " + min_minutes_since_last_scenario_1_trigger );
 		email_body.Add( "scenario_2_max_current_server_population[" + max_server_population[server_number] + "] = " + scenario_2_max_current_server_population[max_server_population[server_number]] );
 		email_body.Add( "" );
