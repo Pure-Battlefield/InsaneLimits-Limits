@@ -39,7 +39,7 @@ max_server_population[2] = 48;
 // Scenario 1 (Population critically low) variables
 int scenario_1_max_current_non_seeder_population = 6;
 int scenario_1_max_current_seeder_population = 2;
-int scenario_1_min_minutes_since_last_scenario_1_trigger_daytime = 20;
+int scenario_1_min_minutes_since_last_scenario_1_trigger_daytime = 30;
 int scenario_1_min_minutes_since_last_scenario_1_trigger_nighttime = 180;
 
 // The following variables are based on the server's time:
@@ -64,8 +64,8 @@ scenario_1_email_body.Add( "Thank you for your service to PURE!" );
 
 // Scenario 2 (Population modest) variables
 int[] scenario_2_max_current_server_population = new int[65];				// defines what the threshold should be for a server of a particular max size
-scenario_2_max_current_server_population[64] = 42;
-scenario_2_max_current_server_population[48] = 30;
+scenario_2_max_current_server_population[64] = 38;
+scenario_2_max_current_server_population[48] = 27;
 int scenario_2_max_current_seeder_population = 2;
 int scenario_2_min_minutes_since_last_scenario_1_trigger = 180;
 int scenario_2_min_minutes_since_last_scenario_2_trigger = 180;
@@ -117,7 +117,7 @@ scenario_3_email_body.Add( "Idle seeders, please log out, or admins, please log 
 // general
 int scenario_triggered = 0;		// Has a scenario been triggered yet?  (Only one per limit execution)
 int server_number = 0;
-string server_url;
+string server_url = "";
 
 // scenario trigger history
 DateTime zero_time = new DateTime( 1, 1, 1, 0, 0, 0 );
@@ -146,6 +146,7 @@ int current_idle_seeder_population = 0;
 List <PlayerInfoInterface> allPlayers = new List <PlayerInfoInterface>();
 List <string> current_seeder_names_list = new List <string>();
 List <string> current_idle_seeder_names_list = new List <string>();
+string current_player_names = "";
 string current_seeder_names = "";
 string current_idle_seeder_names = "";
 
@@ -213,6 +214,7 @@ bool firstIdleSeederAdded = false;
 // check if each player is a seeder
 foreach( PlayerInfoInterface p in allPlayers )
 {
+	current_player_names += ( p.Name + " " );
 	if( plugin.isInList(p.Name, "Seeders") )
 	{
 		// they're a seeder!
@@ -453,6 +455,7 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 		email_body.Add( "current_non_seeder_population = " + current_non_seeder_population );
 		email_body.Add( "current_seeder_population = " + current_seeder_population );
 		email_body.Add( "current_idle_seeder_population = " + current_idle_seeder_population );
+		email_body.Add( "current_player_names = " + current_player_names );
 		email_body.Add( "current_seeder_names = " + current_seeder_names );
 		email_body.Add( "current_idle_seeder_names = " + current_idle_seeder_names );
 		email_body.Add( "" );
