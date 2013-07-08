@@ -11,7 +11,7 @@ if(        !(
 
 /* NEWS SECTION */
   	
-string news_1 = "SERVER NEWS: June 8th"; 
+string news_1 = "SERVER NEWS: July 8th"; 
 string news_2 = "We're now recruiting Operations Staff!"; 
 string news_3 = "Service guarantees citizenship (and Donor Perks)";
 string news_4 = "Go to volunteer.purebattlefield.org for info!";
