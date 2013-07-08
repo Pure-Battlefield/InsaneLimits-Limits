@@ -11,10 +11,10 @@ if(        !(
 
 /* NEWS SECTION */
   	
-string news_1 = "SERVER NEWS: June 1st"; 
-string news_2 = "Our TeamSpeak puts you in private squad"; 
-string news_3 = "channels! Type \"!tsinfo\" for more info.";
-string news_4 = "Server: teamspeak.purebattlefield.org";
+string news_1 = "SERVER NEWS: June 8th"; 
+string news_2 = "We're now recruiting Operations Staff!"; 
+string news_3 = "Service guarantees citizenship (and Donor Perks)";
+string news_4 = "Go to volunteer.purebattlefield.org for info!";
 
 List<string> News = new List<string>(); 
 News.Add(news_1);
