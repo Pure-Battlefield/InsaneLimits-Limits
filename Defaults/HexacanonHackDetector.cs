@@ -2,14 +2,14 @@
 // action taken on damage modifiers
 	Action<String> DamageModifierPlayer = delegate(String who) {
        // set action here default is 1 hour ban
-        server.SendMail("anticheat@purebattlefield.org", "Player " + player.Name + " is banned for damage modifier", "PB Guid: " + player.PBGuid);
+        plugin.SendMail("anticheat@purebattlefield.org", "Player " + player.Name + " is banned for damage modifier", "PB Guid: " + player.PBGuid);
         String message = "Suspicious stats | Appeal: appeals@purebattlefield.org";
         plugin.EABanPlayerWithMessage(EABanType.EA_GUID, EABanDuration.Temporary, who, 60, message);
 	};
 // action taken for blackpoint violaters
 	Action<String> BlackPointPlayer = delegate(String who) {
         // set action here default is 1 hour ban
-        server.SendMail("anticheat@purebattlefield.org", "Player " + player.Name + " is banned for black points", "PB Guid: " + player.PBGuid);
+        plugin.SendMail("anticheat@purebattlefield.org", "Player " + player.Name + " is banned for black points", "PB Guid: " + player.PBGuid);
         String message = "Suspicious stats | Appeal: appeals@purebattlefield.org";
         plugin.EABanPlayerWithMessage(EABanType.EA_GUID, EABanDuration.Temporary, who, 60, message);
 	};
@@ -21,7 +21,7 @@
 Action<String> NotifyMeAbout = delegate(String who) {
         // set notification here, such as email,sound notification, taskbar notification, logging etc ..
         // this is triggered for all players who have Black points above the NotifyMe value
-        server.SendMail("anticheat@purebattlefield.org", "Player " + player.Name + " is suspicous", "PB Guid: " + player.PBGuid);
+        plugin.SendMail("anticheat@purebattlefield.org", "Player " + player.Name + " is suspicous", "PB Guid: " + player.PBGuid);
         plugin.Log("Cheat-o-meter.log", plugin.R("[%date% %time%] [%server_host%] [server.Name] [player.EAGuid] " + who)); // this will log player name only with his EA GUID, still require testing
 	};
 // options END
