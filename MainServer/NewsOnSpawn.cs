@@ -11,10 +11,10 @@ if(        !(
 
 /* NEWS SECTION */
 		
-string news_1 = "SERVER NEWS: May 10th"; 
-string news_2 = "Our new Rush server is now live!"; 
-string news_3 = "Search for \"PURE BATTLEFIELD\" in Battlelog, or";
-string news_4 = "go to server2.purebattlefield.org.";
+string news_1 = "SERVER NEWS: July 8th"; 
+string news_2 = "We're now recruiting Operations Staff!"; 
+string news_3 = "Service guarantees citizenship (and Donor Perks)";
+string news_4 = "Go to volunteer.purebattlefield.org for info!";
 
 List<string> News = new List<string>(); 
 News.Add(news_1);
