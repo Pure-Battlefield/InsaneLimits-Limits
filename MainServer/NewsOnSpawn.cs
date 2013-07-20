@@ -12,7 +12,7 @@ if(        !(
 /* NEWS SECTION */
 
 string news_1 = "SERVER NEWS: July 8th"; 
-string news_2 = "A celebration of PURE's first anniversary!; 
+string news_2 = "A celebration of PURE's first anniversary!"; 
 string news_3 = "Saturday 7/27: 11-4 PDT / 2-7 EDT";
 string news_4 = "";
 
