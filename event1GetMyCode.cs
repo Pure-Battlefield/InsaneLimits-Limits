@@ -1,15 +1,13 @@
-﻿//watch for /getcode in the chatbox
-if( Regex.Match(player.LastChat, @"^\s*[!/](getcode)$", RegexOptions.IgnoreCase).Success )
+//watch for /code in the chatbox
+if( Regex.Match(player.LastChat, @"^\s*[!/](code)$", RegexOptions.IgnoreCase).Success )
 {
     //set score minimum
     int threshold = 500;
 
     //is that player eligible?
-    if(player.Score >= threshold){
+    if(player.ScoreRound >= threshold){
 
         //you win!
-        string success = "Congratulations! You are now eligible for the $100 giveaway!";
-        plugin.ServerCommand ( "admin.say" , success, "player" , player.Name ) ;
         
         //would this actually work? the random class must exist within insanelimits
         Random RndNum = new Random();
@@ -18,29 +16,33 @@ if( Regex.Match(player.LastChat, @"^\s*[!/](getcode)$", RegexOptions.IgnoreCase)
         int RnNum = RndNum.Next(10000,99999);
 
         //tell player that number
-        string yourNum = "Your unique # is " + RnNum;
+        string yourNum = "Your giveaway code is " + RnNum + ".";
         plugin.ServerCommand ( "admin.say" , yourNum, "player" , player.Name ) ;
         //i found this function in the insanelimits source code, I don't know if it works, should yell the number and keep it there for 999999
         //in case the chatbox floods away the number
-        SendPlayerYellV(player.Name, "Your unique # is " + RnNum, 999999)
+    	// [Adama] It's 3am, so rather than messing with untested code, I'm going to skip this...
+		// I'll add a message explaining that the player can just do /code again if it scrolls away.
+        // SendPlayerYellV(player.Name, "Your giveaway code is " + RnNum, 999999)
         
         //visit purebattlefield (or some other website!)
-        plugin.ServerCommand ( "admin.say" , "Visit purebattlefield.org to enter your code!", "player", player.Name );
+        string msg = "Enter this code at register.purebattlefield.org.";
+        plugin.ServerCommand ( "admin.say" , msg, "player" , player.Name ) ;
+        msg = "(If it scrolls away, just type /code again.)";
+        plugin.ServerCommand ( "admin.say" , msg, "player" , player.Name ) ;
         
-        //Log a file that's dated with 1EVENT.csv in some folder somewhere
-        String logName = plugin.R("Logs/%server_host%_%server_port%/1EVENTlog/") + "1EVENT.csv";
-        String line = player.Name + "," + RnNum;
+        //Log a file that's dated with GiveawayCodes.csv in some folder somewhere
+		String time = DateTime.Now.ToString("HH:mm:ss");
+        String logName = plugin.R("Logs/%server_host%_%server_port%/") + "GiveawayCodes.csv";
+        String line = time + "," + player.Name + "," + player.ScoreRound + "," + RnNum;
         plugin.Log(logName, line);
-        return false;
+        return true;
 
     }else{
 
         //you lose!
-        string scoreTooLow = "Your in-game score is below the current threshold of " + threshold + ".";
+        string scoreTooLow = "You need at least " + threshold + " points to receive a giveaway code.";
         plugin.ServerCommand ( "admin.say", scoreTooLow, "player" , player.Name ) ;
-        string tryAgain = "Try again when your score is above " + threshold + "! NOTE: You can only enter once - if you already have successfully requested a code, you're set!";
-        plugin.ServerCommand ( "admin.say", tryAgain, "player" , player.Name ) ;
-        return false;
+        return true;
     }
 }
 
