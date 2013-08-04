@@ -12,12 +12,12 @@ Fork author website: http://reddit.com/user/txapollo342
 
 /// Configurable variables
 
-double percent = 50; // percentage of minimum number of players per total number of players in the __losing team__ that have to vote
-double timeout = 5.0; // number of minutes before the vote expires
+double percent = 30; // percentage of minimum number of players per total number of players in the __losing team__ that have to vote
+double timeout = 3.0; // number of minutes before the vote expires
 double timeToVoteMotion = 3.0; // time period since the start of the round (in minutes) within which voting isn't allowed
 int minPlayers = 16; // minimum number of players for vote activation
-double minTicketPercent = 10; // minimum percentage of tickets remaining
-double minTicketGap = 50; // minimum ticket gap between winning and losing teams
+double minTicketPercent = 20; // minimum percentage of tickets remaining
+double minTicketGap = 80; // minimum ticket gap between winning and losing teams
 
 // Output messages (take care to modify the replacements appropriately in string.Format() functions)
 
