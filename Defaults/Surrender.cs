@@ -28,7 +28,6 @@ string voteFailLowVoterTurnout = "Not enough players to hold a vote.";
 string alreadyVoted = "You already voted.";
 string votedFor = "You voted to end this round and start the next round.";
 string voteFailTimeout = "Voting time has expired, only {0}% voted, needed {1}%";
-string remainingForVotesNeeded = "{0} {1} !surrender votes needed to end round with {3} minutes left.";
 string remaingVotersNotFirst = "{0} !surrender needed to end round with {1} minutes left.";
 string consoleVotedFor = "^b[VoteNext]^n {0} voted to end the round.";
 string consoleTimerStarted = "^b[VoteNext]^n vote timer started.";
@@ -36,7 +35,6 @@ string consoleTimeout = "^b[VoteNext]^n vote timeout expired.";
 string consoleLoserVotes = "^b[VoteNext]^n loser votes = {0} of {1}.";
 string consoleNeededVotes = "^b[VoteNext]^n needed votes = {0}.";
 string roundEnds = "Vote succeeded: round ends now, {0} team wins.";
-string percentageVoted = "{0}% of the losing team voted.";
 
 /// End of configurable variables' section
 
