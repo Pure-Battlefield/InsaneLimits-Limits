@@ -4,7 +4,7 @@ Function: offers the option for the losing team to surrender; ends the current g
 
 Original author: "PapaCharlie9"
 Original code: https://forum.myrcon.com/showthread.php?4533-Insane-Limits-V0-8-R5-Vote-to-nuke-camping-base-raping-team-or-!surrender-%28CQ-Rush%29&p=51515&viewfull=1#post51515
-
+Fork version: 1.0.0
 Fork author: Filippos D. Soulakis ("txapollo243")
 Fork author contact e-mail: txapollo243@gmail.com
 Fork author website: http://reddit.com/user/txapollo342
@@ -21,20 +21,20 @@ double minTicketGap = 50; // minimum ticket gap between winning and losing teams
 
 // Output messages (take care to modify the replacements appropriately in string.Format() functions)
 
-string voteFailRoundNearingEnd = "Round too close to ending to hold a vote.";
-string voteFailTooSoon = "It's too soon to hold a vote.";
-string voteFailSmallTicketGap = "Ticket counts too close to hold a vote.";
-string voteFailLowVoterTurnout = "Not enough players to hold a vote.";
-string alreadyVoted = "You already voted.";
-string votedFor = "You voted to end this round and start the next round.";
-string voteFailTimeout = "Voting time has expired, only {0}% voted, needed {1}%";
-string remaingVotersNotFirst = "{0} !surrender needed to end round with {1} minutes left.";
+string voteFailRoundNearingEnd = "You can't surrender with < 20% tickets remaining.";
+string voteFailTooSoon = "You can't surrender in the first 3 minutes of a round.";
+string voteFailSmallTicketGap = "You must be losing by over 80 tickets to surrender..";
+string voteFailLowVoterTurnout = "There must be at least 16 total players to surrender.";
+string alreadyVoted = "You've already participated in this surrender vote.";
+string votedFor = "You've placed a vote for your team to surrender!";
+string voteFailTimeout = "Surrender vote has failed. ({0}% / {1}% votes)";
+string votedForVoteStatus = "{0} more votes in {1} minutes needed to pass.";
 string consoleVotedFor = "^b[VoteNext]^n {0} voted to end the round.";
 string consoleTimerStarted = "^b[VoteNext]^n vote timer started.";
 string consoleTimeout = "^b[VoteNext]^n vote timeout expired.";
 string consoleLoserVotes = "^b[VoteNext]^n loser votes = {0} of {1}.";
 string consoleNeededVotes = "^b[VoteNext]^n needed votes = {0}.";
-string roundEnds = "Vote succeeded: round ends now, {0} team wins.";
+string roundEnds = "{0} wins due to the opposing team's surrender!";
 
 /// End of configurable variables' section
 
@@ -45,7 +45,7 @@ String kNeeded = "votenext_needed";
 int level = 2;
 
 try {
-  level = Convert.ToInt32(plugin.getPluginVarValue("debug_level"));
+	level = Convert.ToInt32(plugin.getPluginVarValue("debug_level"));
 } catch (Exception e) {}
 
 String msg = "empty";
@@ -142,8 +142,7 @@ int remain = needed - votes;
 
 if (since.TotalMinutes > timeout) {
 	msg = string.Format(voteFailTimeout, Convert.ToInt32(Math.Ceiling((votes/needed)*100.0)), percent);
-	plugin.SendGlobalMessage(msg);
-	plugin.ServerCommand("admin.yell", msg);
+	ChatPlayer(player.Name);
 	if (level >= 2) plugin.ConsoleWrite(consoleTimeout);
 	foreach (PlayerInfoInterface can in losers) {
 		// Erase the vote
@@ -175,10 +174,9 @@ String otherVoters = (losing == 1) ? "RU" : "US";
 
 if (remain > 0) {
     if (firstTime) {
-		msg = string.Format(remaingVotersNotFirst, remain, Convert.ToInt32(Math.Ceiling(timeout - since.TotalMinutes)));
+		msg = string.Format(votedForVoteStatus, remain, Convert.ToInt32(Math.Ceiling(timeout - since.TotalMinutes)));
 	}
-	plugin.SendGlobalMessage(msg);
-	plugin.ServerCommand("admin.yell", msg, "8");
+    ChatPlayer(player.Name);
 	if (level >= 2) plugin.ConsoleWrite("^b[VoteNext]^n " + msg);
 	return false;
 }
