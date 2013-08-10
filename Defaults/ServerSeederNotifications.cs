@@ -38,7 +38,7 @@ max_server_population[2] = 48;
 
 // Scenario 1 (Population critically low) variables
 int scenario_1_max_current_non_seeder_population = 6;
-int scenario_1_max_current_seeder_population = 2;
+int scenario_1_max_current_seeder_population = 3;
 int scenario_1_min_minutes_since_last_scenario_1_trigger_daytime = 30;
 int scenario_1_min_minutes_since_last_scenario_1_trigger_nighttime = 180;
 
@@ -64,9 +64,9 @@ scenario_1_email_body.Add( "Thank you for your service to PURE!" );
 
 // Scenario 2 (Population modest) variables
 int[] scenario_2_max_current_server_population = new int[65];				// defines what the threshold should be for a server of a particular max size
-scenario_2_max_current_server_population[64] = 38;
-scenario_2_max_current_server_population[48] = 27;
-int scenario_2_max_current_seeder_population = 2;
+scenario_2_max_current_server_population[64] = 36;
+scenario_2_max_current_server_population[48] = 24;
+int scenario_2_max_current_seeder_population = 3;
 int scenario_2_min_minutes_since_last_scenario_1_trigger = 180;
 int scenario_2_min_minutes_since_last_scenario_2_trigger = 180;
 
@@ -132,7 +132,7 @@ if( !server.Data.issetObject(key_last_scenario_2_trigger) )
 	server.Data.setObject( key_last_scenario_2_trigger, zero_time );
 if( !server.Data.issetObject(key_last_scenario_3_trigger) )
 	server.Data.setObject( key_last_scenario_3_trigger, zero_time );
-	
+
 DateTime last_scenario_1_trigger = (DateTime) server.Data.getObject( key_last_scenario_1_trigger );
 DateTime last_scenario_2_trigger = (DateTime) server.Data.getObject( key_last_scenario_2_trigger );
 DateTime last_scenario_3_trigger = (DateTime) server.Data.getObject( key_last_scenario_3_trigger );
@@ -388,7 +388,7 @@ if( scenario_triggered == 0 )
 	{
 		scenario_triggered = 2;
 		server.Data.setObject( key_last_scenario_2_trigger, DateTime.Now );
-		
+
 		email_recipients = scenario_2_email_recipients;
 		email_subject = scenario_2_email_subject;
 		email_body = scenario_2_email_body;
@@ -440,7 +440,7 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 		email_body[i] = email_body[i].Replace( "[server_url]", server_url );
 		email_body[i] = email_body[i].Replace( "[seeder_list_url]", seeder_list_url );
 	}
-	
+
 	// add debug info if appropriate
 	if( debug_level >= 1 )
 	{
@@ -482,7 +482,7 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 		email_body.Add( "email_subject_prefix = " + email_subject_prefix );
 		email_body.Add( "" );
 		email_body.Add( "debug_level = " + debug_level );
-		
+
 		if( debug_level >= 2 )
 		{
 			email_recipients = debug_email_recipients;
@@ -494,7 +494,7 @@ if( (scenario_triggered != 0) || (debug_level >= 3) )
 	string email_body_string = "";
 	for( int i = 0; i < email_body.Count; i++ )
 		email_body_string += email_body[i] += "\n";
-		
+
 	// send the e-mail!
 	plugin.SendMail( email_recipients, email_subject_prefix + email_subject, email_body_string );
 }
