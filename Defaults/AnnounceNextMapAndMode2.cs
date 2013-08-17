@@ -1,6 +1,7 @@
-﻿if((team1.RemainTicketsPercent < 15 || team2.RemainTicketsPercent < 15)){
-//if( limit.Activations() > 1 )
-  //      return false;
+﻿if( limit.Activations() > 1 )
+        return false;
+
+if((team1.RemainTicketsPercent < 15 || team2.RemainTicketsPercent < 15)){
 
 plugin.ConsoleWrite("Announcing the next map...");
 
