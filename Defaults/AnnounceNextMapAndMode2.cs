@@ -1,5 +1,6 @@
-﻿if( limit.Activations() > 1 )
-        return false;
+﻿if((team1.RemainTicketsPercent < 15 || team2.RemainTicketsPercent < 15)){
+//if( limit.Activations() > 1 )
+  //      return false;
 
 plugin.ConsoleWrite("Announcing the next map...");
 
@@ -8,4 +9,6 @@ String rnd_msg = "(It may be different if the server population changes enough t
 plugin.ServerCommand("admin.say", map_msg, "all");
 plugin.ServerCommand("admin.say", rnd_msg, "all");
 
+return true;
+}
 return true;
