@@ -1,5 +1,5 @@
 //watch for !nextmap
-if (Regex.Match (player.LastChat, @"^\s*[!/](nextmap)$", RegexOptions.IgnoreCase).Success)
+if (Regex.Match(player.LastChat, @"^\s*[!/](nextmap)$", RegexOptions.IgnoreCase).Success)
 {
 plugin.ConsoleWrite(plugin.R("%p_n% wants to know the next map"));
 
