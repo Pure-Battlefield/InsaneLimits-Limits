@@ -1,7 +1,7 @@
 //watch for !nextmap
 if (Regex.Match(player.LastChat, @"^\s*[!/](nextmap)$", RegexOptions.IgnoreCase).Success)
 {
-plugin.ConsoleWrite(plugin.R("" + player.Name + " wants to know the next map"));
+plugin.ConsoleWrite("" + player.Name + " wants to know the next map");
 
 String map_msg = "Next map is " + plugin.FriendlyMapName(server.NextMapFileName);
 String rnd_msg = "(It may be different if the server population changes enough to activate a different map rotation.) ";
