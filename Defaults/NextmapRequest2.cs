@@ -1,7 +1,7 @@
 //watch for !nextmap
 if (Regex.Match(player.LastChat, @"^\s*[!/](nextmap)$", RegexOptions.IgnoreCase).Success)
 {
-plugin.ConsoleWrite(plugin.R("%p_n% wants to know the next map"));
+plugin.ConsoleWrite(plugin.R("" + player.Name + " wants to know the next map"));
 
 String map_msg = "Next map is " + plugin.FriendlyMapName(server.NextMapFileName) + " on " + plugin.FriendlyModeName(server.NextGamemode);
 String rnd_msg = "The current round is " + (server.CurrentRound+1) + " of " + server.TotalRounds;
