@@ -1,0 +1,15 @@
+string fancy_time = DateTime.Now.ToString("HH:mm:ss");
+string fancy_date = DateTime.Now.ToString("yyyy-MM-dd");
+
+if (player.PBGuid == "" || player.PBGuid == null)
+{
+	string message = "";
+        message = plugin.R("Date - Time: " + fancy_date + " - " + fancy_time + "\n" + "Name: %p_n%\n" + "IP Address: %p_ip%\n" + "EA GUID: %p_eg%\n" + "PB GUID: %p_pg%\n");
+	plugin.ConsoleWrite("Player detected with no PB_GUID");
+        plugin.SendMail("bfanman09@gmail.com", "Player detected with no PB_GUID", message);
+        plugin.SendMail("ratdart@gmail.com", "Player detected with no PB_GUID", message);
+        plugin.SendMail("jhogan@purebattlefield.org", "Player detected with no PB_GUID", message);
+        //plugin.KickPlayerWithMessage(player.Name, "No PB_GUID Detected");	
+}
+
+return false;
