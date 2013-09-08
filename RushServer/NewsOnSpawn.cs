@@ -11,7 +11,7 @@ if(        !(
 
 /* NEWS SECTION */
   	
-string news_1 = "SERVER NEWS: July 29th"; 
+string news_1 = "SERVER NEWS: September 7th"; 
 string news_2 = "Don't forget to join our TeamSpeak Server"; 
 string news_3 = "Server: teamspeak.purebattlefield.org";
 string news_4 = "Type in \"!tsinfo\" for more information.";
