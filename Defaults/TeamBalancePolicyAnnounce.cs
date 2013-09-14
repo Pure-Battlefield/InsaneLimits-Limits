@@ -30,15 +30,15 @@ message.Add( "Shuffling is based on players' Battlelog stats." );
 // messaging below is for InsaneBalancer
 if( server.PlayerCount <= maxPopulationForAlwaysShufflingSquads )
 {
-        message.Add( "Teams are shuffled by player SPM after each map." );
+        message.Add( "Teams are shuffled after each map." );
         message.Add( "If " + maxPopulationForAlwaysShufflingSquads + " or fewer players, squads are split pre-shuffle." );
         message.Add( "Squads are otherwise kept intact whenever possible." );
 }
 else
 {
-        message.Add( "Teams are shuffled by player SPM after each map." );
-        message.Add( "Squads are kept intact whenever possible." );
-        message.Add( "Different team sizes may require a few splits." );
+        message.Add( "Teams are shuffled after each map." );
+        message.Add( "If under 24 players, squads are split pre-shuffle." );
+        message.Add( "Squads are otherwise kept intact whenever possible." );
 }
 
 foreach( string msg in message )
