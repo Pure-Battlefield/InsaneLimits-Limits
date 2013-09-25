@@ -7,13 +7,13 @@ if (null == command || command.Length == 0)
         return false;
 }
         
-if (Regex.Match(command, @"^(?:(?:/[!@]?)|(?:[!@]))pageadmin[s]?\s*$", RegexOptions.IgnoreCase).Success) 
+if (Regex.Match(command, @"^(?:(?:[!@]?)|(?:/[!@]?))pageadmin[s]?\s*$", RegexOptions.IgnoreCase).Success) 
 {
         plugin.ServerCommand("admin.say", "Please include a message to page the admin team: \"!pageadmins [message]\"", "player", player.Name);
         return false;
 }
         
-if (Regex.Match(command, @"^(?:(?:/[!@]?)|(?:[!@]))pageadmin[s]? .+$", RegexOptions.IgnoreCase).Success) 
+if (Regex.Match(command, @"^(?:(?:[!@]?)|(?:/[!@]?))pageadmin[s]?.+$", RegexOptions.IgnoreCase).Success) 
 {        
         List<PlayerInfoInterface> players = new List<PlayerInfoInterface>();
         players.AddRange(team1.players);
