@@ -4,10 +4,11 @@ string fancy_date = DateTime.Now.ToString("yyyy-MM-dd");
 
 List<string> racisms = new List<string>();
         racisms.Add("nigger");
-        racisms.Add("paki");
+        racisms.Add("phaggot");
         racisms.Add("fag");
         racisms.Add("faggot");
-        racisms.Add("homo");
+        racisms.Add("phaggots");
+        racisms.Add("faggots");
         
 string[] chatwords = Regex.Split(player.LastChat, @"\s+");
         
