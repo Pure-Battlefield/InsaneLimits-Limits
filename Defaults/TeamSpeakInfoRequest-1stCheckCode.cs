@@ -1,7 +1,7 @@
 if( Regex.Match(player.LastChat, @"^\s*[!/](tshelp)$", RegexOptions.IgnoreCase).Success )
 {
         string ts_1 = "!tssquads: List squads with 1-3 TS players in them";
-        string ts_2 = "!tslobby: Go to lobby this round (disable squad sync)";
+        string ts_2 = "!tslobby: Go to server lobby (disable squad sync until reactivated)";
         string ts_3 = "!tssync: Re-enable squad sync immediately";
 
         List<string> TS3= new List<string>();
